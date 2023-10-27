@@ -1,28 +1,29 @@
-const kilometers  = prompt("Quanti chilometri vuoi percorrere?");
-const age = prompt ("Quanti anni hai?");
+const kilometers  = Number( prompt("Quanti chilometri vuoi percorrere?"));
+const age = Number( prompt("Quanti anni hai?"));
 const kmtariff = 0.21
+const titleElement = document.getElementById("title");
+const priceElement = document.getElementById("price");
+titleElement.innerHTML = `Il prezzo del biglietto è di:`;
+
 let total = kilometers * kmtariff;
 if ( !isFinite(kilometers) || !isFinite(age) ) {
-    document.getElementById("title").innerHTML = `Controlla di aver inserito correttamente i dati.`;
+    titleElement.innerHTML = `Controlla di aver inserito correttamente i dati.`;
 } else if (age < 18) {
-    total = ((total / 100) * 80).toFixed(2);
-    document.getElementById("title").innerHTML = `Il prezzo del biglietto è di:`;
-    document.getElementById("price").innerHTML = `${total} €`;
-    document.getElementById("price").style.color = "green";
+    total = (total * 0.8).toFixed(2);
+    priceElement.innerHTML = `${total} €`;
+    priceElement.style.color = "green";
     
 } else if (age >= 65) {
-    total = ((total / 100) * 60).toFixed(2);
-    document.getElementById("title").innerHTML = `Il prezzo del biglietto è di:`;
-    document.getElementById("price").style.color = "green";
-    document.getElementById("price").innerHTML = `${total} €`;
+    total = (total * 0.6).toFixed(2);
+    priceElement.style.color = "green";
+    priceElement.innerHTML = `${total} €`;
 } else {
-    document.getElementById("title").innerHTML = `Il prezzo del biglietto è di:`;
-    document.getElementById("price").innerHTML = `${total} €`;
-    document.getElementById("price").style.color = "green";
+    priceElement.innerHTML = `${total} €`;
+    priceElement.style.color = "green";
 }
 document.getElementById("pageBody").style.backgroundColor = "black";
-document.getElementById("title").style.color = "white";
-document.getElementById("title").style.textAlign = "center";
-document.getElementById("price").style.textAlign = "center";
+titleElement.style.color = "white";
+titleElement.style.textAlign = "center";
+priceElement.style.textAlign = "center";
 
 
